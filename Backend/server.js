@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import OpenAI from 'openai';
 import mongoose from 'mongoose';
-import chatRoutes from './routes/char.js';
+import router from './routes/char.js';
 
 import express from 'express';
 import cors from 'cors';
@@ -22,7 +22,7 @@ const connectDb=async ()=>{
     }
 }
 
-app.use('/api', chatRoutes);   
+app.use('/api', router);   
 
 
 
