@@ -6,7 +6,7 @@ import getOpenAiResponse from '../utils/openai.js';
 
 
 
-router.post('/test', async(req,res)=>{
+/*router.post('/test', async(req,res)=>{
 try{
 
 const thread=new Thread({
@@ -21,7 +21,7 @@ res.json({ success: true, thread });
     console.log(err);
     res.status(500).send('Error occurred while processing the request');
 }
-})
+}) */
 
 
 
@@ -85,7 +85,7 @@ if(!threadId || !message){
     return res.status(400).json({message:'threadId and message are required'});
 
 }
-const thread = await Thread.findOne({threadId});
+let thread = await Thread.findOne({threadId});
 if(!thread){
     const threads=new Thread({
         threadId,

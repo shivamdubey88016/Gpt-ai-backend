@@ -53,4 +53,5 @@ updatedAt: {
 const Message = mongoose.model('Message', MessageSchema);
 const Thread = mongoose.model('Thread', ThreadSchema);
 
-export  default { Message, Thread };
+export { Message };
+export default Thread;

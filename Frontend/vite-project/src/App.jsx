@@ -4,9 +4,18 @@ import Sidebar from './Sidebar.jsx';
 //import Chat from './Chat.jsx';  
 import ChatWindo from './ChatWindo.jsx';
 import { MyContext } from './Mycontex.jsx';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
-  const providerValues = {};
+
+  const [prompts, setPrompts] = useState('');
+  const [responses, setResponses] = useState([]);
+  const [currThread, setCurrThread] = useState(uuidv4());
+  const [previousChats, setPreviousChats] = useState([]);// State to hold previous chats
+  const [newChat, setNewChat] = useState(true); // State to trigger new chat creation
+  const providerValues = { prompts, setPrompts, responses, setResponses, currThread, setCurrThread, previousChats, setPreviousChats, newChat, setNewChat };
+
   return (
     <div className="app">
       <MyContext.Provider value={providerValues}>
