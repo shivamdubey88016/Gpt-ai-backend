@@ -14,9 +14,11 @@ import Chat from './Chat.jsx';
 //import Chat from './Chat.jsx';
 const ChatWindo = () => {
   const [loading, setLoading] = useState(true);
-  const { prompts, setPrompts, responses, setResponses, currThread, setCurrThread, previousChats, setPreviousChats } = useContext(MyContext);
+  const [isOpen, setIsOpen] = useState(true);
+  const { prompts, setPrompts, responses, setResponses, currThread, setCurrThread, previousChats, setPreviousChats ,setNewChat} = useContext(MyContext);
   const getResponse = async () => {
-
+setNewChat(false);
+    setLoading(true);
 
 
     const options = {
@@ -67,17 +69,34 @@ const ChatWindo = () => {
 }, [responses]);
 
 
+const handelProfileClick=()=>{
+  setIsOpen(!isOpen);
+}
   return (
     <>
       <div className="chat-window">
         <div className="navbar">
 
           <span>sigmagpt &nbsp; <i className="fa-solid fa-angle-down"></i> </span>
-          <div className="userIcon">
+          <div className="userIcon" onClick={handelProfileClick}>
             <span><i className="fa-solid fa-user" id="ui"></i></span>
           </div>
         </div>
+{
+isOpen && <div className="userMenu">
+  <div className="dropDownItem">Upgrade plan <i className="fa-solid fa-arrow-up-right-from-square"></i></div>
+  <div className="dropDownItem">Settings <i className="fa-solid fa-gear"></i></div>
 
+  <div className="dropDownItem">Logout <i className="fa-solid fa-sign-out"></i></div>
+   <div className="dropDownItem">signup <i className="fa-solid fa-user-plus"></i></div>
+
+
+  
+</div>
+
+
+
+}
         <Chat></Chat>
       
 

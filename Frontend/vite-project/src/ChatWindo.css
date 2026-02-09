@@ -94,3 +94,25 @@ outline: none;
     cursor: pointer;
     margin: 0 0.5rem;
         }
+        .userMenu{
+            position: absolute;
+            top: 45px;
+            right: 4rem;
+            background-color: #424242;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        .dropDownItem{
+            padding: 0.5rem 1rem;
+            color: #ececec;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .dropDownItem:hover{    
+            background-color: #616161;
+        }       

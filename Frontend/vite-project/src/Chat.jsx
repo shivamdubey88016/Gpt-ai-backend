@@ -19,6 +19,10 @@ const Chat = () => {
 
 
     useEffect(() => {
+     if(responses===null){
+            setLatest(null);
+            return;
+        }
         if (!previousChats?.length ){
             return;
         } 
@@ -40,11 +44,11 @@ return () => clearInterval(intervalId);
 
     return (
         <>
-            {newChat && <h1> start a new chat </h1>}
+            {newChat && <h1>    Welocme back  </h1>}
             <div className="chats">
                 {
 
-                    previousChats?.slice(0,-1).map((chat, idx) =>
+                     previousChats?.slice(0,-1).map((chat, idx) =>
 
                         <div className={chat.role === "user" ? "userDiv" : "gptDiv"} key={idx}>
                             {
@@ -65,6 +69,10 @@ return () => clearInterval(intervalId);
 
                 {previousChats?.length > 0 && latest!==null && <div className="gptDiv" key={"typing"}>
                     <ReactMarkdown rehypePlugins={[rehypeHighlight]} >{latest}</ReactMarkdown>
+                </div>}
+
+                 {previousChats?.length > 0 && latest===null && <div className="gptDiv" key={"non-typing"}>
+                    <ReactMarkdown rehypePlugins={[rehypeHighlight]} >{previousChats[previousChats.length - 1]?.content}</ReactMarkdown>
                 </div>}
             </div>
 
